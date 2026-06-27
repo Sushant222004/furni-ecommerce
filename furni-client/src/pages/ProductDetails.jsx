@@ -9,7 +9,13 @@ function ProductDetail() {
   const product = data.products.find((item) => item.id === Number(para.id));
   const { cartItems, setCartItems } = useContext(CartContext);
   const addToCart = () => {
-    setCartItems([...cartItems, product]);
+    setCartItems([
+      ...cartItems,
+      {
+        ...product,
+        quantity: 1,
+      },
+    ]);
   };
   if (!product) {
     return (

@@ -84,6 +84,13 @@ function Navbar() {
           <NavLink to="/services">Services</NavLink>
           <NavLink to="/blog">Blog</NavLink>
           <NavLink to="/contact">Contact Us</NavLink>
+          <Link to="/cart" className="relative">
+            <FiShoppingCart className="text-xl text-white cursor-pointer" />
+
+            <span className="absolute -top-3 -right-3 bg-[#f9bf29] text-black text-xs w-5 h-5 rounded-full flex items-center justify-center">
+              {cartItems.length}
+            </span>
+          </Link>
         </ul>
       )}
     </nav>

@@ -6,7 +6,36 @@ import { Link } from "react-router-dom";
 
 function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
-  const [QuantityCount, setQuantityCount] = useState(1);
+
+  const increaseQuantity = (indexToUpdate) => {
+    const updatedCart = cartItems.map((item, index) => {
+      if (index === indexToUpdate) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+
+      return item;
+    });
+
+    setCartItems(updatedCart);
+  };
+
+  const decreaseQuantity = (indexToUpdate) => {
+    const updatedCart = cartItems.map((item, index) => {
+      if (index === indexToUpdate && item.quantity > 1) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+
+      return item;
+    });
+
+    setCartItems(updatedCart);
+  };
 
   const removeFromCart = (indexToRemove) => {
     const updatedCart = cartItems.filter((_, index) => index !== indexToRemove);
@@ -14,7 +43,7 @@ function Cart() {
   };
 
   const subtotal = cartItems.reduce((total, item) => {
-    return total + Number(item.price.replace("$", "") * QuantityCount);
+    return total + Number(item.price.replace("$", "") * item.quantity);
   }, 0);
 
   return (
@@ -60,24 +89,24 @@ function Cart() {
                 <FiMinus
                   className="cursor-pointer"
                   onClick={() => {
-                    QuantityCount > 1 && setQuantityCount(QuantityCount - 1);
+                    decreaseQuantity(index);
                   }}
                 />
 
                 <input
                   className="w-10 h-10 border border-gray-300 rounded-sm text-center"
                   type="text"
-                  value={QuantityCount}
+                  value={item.quantity}
                   readOnly
                 />
 
                 <FiPlus
                   className="cursor-pointer"
-                  onClick={() => setQuantityCount(QuantityCount + 1)}
+                  onClick={() => increaseQuantity(index)}
                 />
               </div>
 
-              <p>${item.price.replace("$", "") * QuantityCount}.00</p>
+              <p>${item.price.replace("$", "") * item.quantity}.00</p>
 
               <div>
                 <FiX

@@ -1,14 +1,23 @@
 import { FiUser, FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const [showMenu, setShowMenu] = useState(false);
+  const token = localStorage.getItem("token");
   const [isOpen, SetisOpen] = useState(false);
   const { cartItems } = useContext(CartContext);
   const menuHandler = () => {
     SetisOpen(!isOpen);
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setShowMenu(false);
+    navigate("/");
+    window.location.reload();
   };
   return (
     <nav className=" bg-[#3b5d50]">
@@ -53,7 +62,40 @@ function Navbar() {
         </ul>
         <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center gap-6">
-            <FiUser className="text-xl text-white cursor-pointer" />
+            {token ? (
+              <div className="relative">
+                <FiUser
+                  className="text-xl text-white cursor-pointer"
+                  onClick={() => setShowMenu(!showMenu)}
+                />
+
+                {showMenu && (
+                  <div className="absolute right-0 top-8 bg-white rounded-lg shadow-lg w-40 z-50">
+                    <Link
+                      to="/profile"
+                      className="block px-4 py-2 text-black bg-green-200 hover:bg-green-400 "
+                      onClick={() => setShowMenu(false)}
+                    >
+                      Profile
+                    </Link>
+
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-black bg-green-200 hover:bg-green-400"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-[#f9bf29] text-black px-4 py-1 rounded-full hover:bg-yellow-400 transition"
+              >
+                Sign In
+              </Link>
+            )}
             <Link to="/cart" className="relative">
               <FiShoppingCart className="text-xl text-white cursor-pointer" />
 
@@ -88,7 +130,7 @@ function Navbar() {
             <FiShoppingCart className="text-xl text-white cursor-pointer" />
 
             <span className="absolute -top-3 -right-3 bg-[#f9bf29] text-black text-xs w-5 h-5 rounded-full flex items-center justify-center">
-             + {cartItems.length}
+              + {cartItems.length}
             </span>
           </Link>
         </ul>

@@ -1,7 +1,7 @@
 import grid1 from "../assets/images/img-grid-1.jpg";
 import grid2 from "../assets/images/img-grid-2.jpg";
 import grid3 from "../assets/images/img-grid-3.jpg";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const features = [
   "Donec vitae odio quis nisl dapibus malesuada",
@@ -14,7 +14,7 @@ function HelpSection() {
   return (
     <section>
       <div className=" flex flex-col lg:flex-row gap-25 max-w-339 mx-auto px-4 md:px-6  lg:px-8 py-16 ">
-        <div className="relative lg:w-1/2 min-h-150">
+        <div className="relative lg:w-1/2 min-h-[600px]">
           <img src={grid1} alt="grid1" className="w-[75%] rounded-3xl" />
 
           <img
@@ -50,13 +50,16 @@ function HelpSection() {
                 </li>
               ))}
             </ul>
-            <Link to = "/blog" className="self-start px-8 py-3 bg-gray-800 text-white rounded-full hover:bg-black">
+            <Link
+              to="/blog"
+              className="self-start px-8 py-3 bg-gray-800 text-white rounded-full hover:bg-black"
+            >
               Explore
             </Link>
           </div>
         </div>
       </div>
-    </section>  
+    </section>
   );
 }
 

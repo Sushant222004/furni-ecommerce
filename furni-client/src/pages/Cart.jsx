@@ -43,7 +43,7 @@ function Cart() {
   };
 
   const subtotal = cartItems.reduce((total, item) => {
-    return total + Number(item.price.replace("$", "") * item.quantity);
+    return total + Number(item.price * item.quantity);
   }, 0);
 
   return (
@@ -76,12 +76,15 @@ function Cart() {
         ) : (
           cartItems.map((item, index) => (
             <div
-              key={`${item.id}-${index}`}
+              key={item._id}
               className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-gray-300 py-6"
             >
-              <img src={item.image} alt={item.name} className="w-32" />
-
-              <p className="font-semibold text-xl">Product {index + 1}</p>
+              <img
+                src={`http://localhost:5000/images/${item.image}`}
+                alt={item.name}
+                className="w-32"
+              />
+              <p className="font-semibold text-xl"> {item.name}</p>
 
               <p className="text-gray-700">{item.price}</p>
 
@@ -106,7 +109,7 @@ function Cart() {
                 />
               </div>
 
-              <p>${item.price.replace("$", "") * item.quantity}.00</p>
+              <p>${item.price * item.quantity}.00</p>
 
               <div>
                 <FiX
@@ -152,18 +155,19 @@ function Cart() {
                 <p>${subtotal}.00 </p>
               </div>
 
+              <Link
+                to="/Checkout"
+                className="self-start bg-black text-white py-5 px-10 rounded-full text-xl hover:bg-gray-800 transition duration-200"
+              >
+                Proceed to Checkout
+              </Link>
+
               <button
                 disabled={cartItems.length === 0}
                 className="self-start bg-black text-white py-5 px-10 rounded-full text-xl disabled:bg-gray-400 hover:bg-gray-800 transition duration-200"
               >
-                Proceed to Checkout
-              </button>
-              <Link
-                to="/shop"
-                className="self-start bg-black text-white py-5 px-10 rounded-full text-xl hover:bg-gray-800 transition duration-200"
-              >
                 Continue Shopping
-              </Link>
+              </button>
             </div>
           </div>
         )}

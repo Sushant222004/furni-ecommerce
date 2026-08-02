@@ -4,7 +4,9 @@ const { success, error } = require("../utils/responsehandler");
 const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { firstName, lastName, email, password } = req.body;
+const name = `${firstName} ${lastName}`
+
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
@@ -36,6 +38,6 @@ const logInUser = async (req, res) => {
     expiresIn: "7d",
   });
   return success(res, "Login Successful", { jwttoken });
-}; 
+};
 
 module.exports = { registerUser, logInUser };

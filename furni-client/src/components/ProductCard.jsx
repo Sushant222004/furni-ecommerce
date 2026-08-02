@@ -8,14 +8,14 @@ function ProductCard({ id, image, name, price }) {
     >
       <img
         className="w-full max-w-87.5 transition duration-300 group-hover:-translate-y-3"
-        src={image}
+        src={`http://localhost:5000/images/${image}`}
         alt={name}
       />
 
       <div>
-        <h3 className="font-bold"> {name}</h3> 
+        <h3 className="font-bold"> {name}</h3>
 
-        <p className="font-semibold ">{price}</p>
+        <p className="font-semibold ">${price}</p>
 
         <button className="bg-black mt-3 text-white w-10 h-10 rounded-full opacity-0 translate-y-0 group-hover:opacity-100 transition group-hover:translate-y-4 duration-300">
           +

@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+const path = require("path");
 
 dotenv.config();
 
@@ -14,9 +16,11 @@ dotenv.config();
 
   app.use(cors());
   app.use(express.json());
+  app.use("/images", express.static(path.join(__dirname, "images")));
 
   app.use("/api/auth", authRoutes);
   app.use("/api/products", productRoutes);
+  app.use("/api/orders", orderRoutes);
 
   app.get("/", (req, res) => {
     res.send("API Running...");

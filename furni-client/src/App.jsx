@@ -16,7 +16,7 @@ import Success from "./pages/Success";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import ProtectedRoute from "./components/protectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (

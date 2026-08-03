@@ -40,7 +40,7 @@ const Register = () => {
     }
 
     try {
-      await axios.post("http://furni-ecommerce-3.onrender.com/api/auth/register", {
+      await axios.post("https://furni-ecommerce-3.onrender.com/api/auth/register", {
         ...registerData,
       });
       alert("Registered Successfully!");

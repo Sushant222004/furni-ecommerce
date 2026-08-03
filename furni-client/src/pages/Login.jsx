@@ -27,7 +27,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://furni-ecommerce-3.onrender.com/api/auth/login",
+        "https://furni-ecommerce-3.onrender.com/api/auth/login",
         loginData,
       );
 

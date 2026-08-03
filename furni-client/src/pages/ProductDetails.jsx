@@ -14,12 +14,12 @@ function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await axios.get(
-        `http://furni-ecommerce-3.onrender.com/api/products/${id}`,
+        `https://furni-ecommerce-3.onrender.com/api/products/${id}`,
       );
       setProduct(response.data.data);
 
       const productsResponse = await axios.get(
-        "http://furni-ecommerce-3.onrender.com/api/products",
+        "https://furni-ecommerce-3.onrender.com/api/products",
       );
 
       setProducts(productsResponse.data.data);
@@ -50,7 +50,7 @@ function ProductDetail() {
       <div className="flex flex-col lg:flex-row gap-12 items-center">
         <img
           className="w-full max-w-87.5"
-          src={`http://furni-ecommerce-3.onrender.com/images/${product.image}`}
+          src={`https://furni-ecommerce-3.onrender.com/images/${product.image}`}
           alt={product.name}
         />
         <div className="flex flex-col gap-6">

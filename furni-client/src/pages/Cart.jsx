@@ -80,7 +80,7 @@ function Cart() {
               className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-gray-300 py-6"
             >
               <img
-                src={`http://furni-ecommerce-3.onrender.com/images/${item.image}`}
+                src={`https://furni-ecommerce-3.onrender.com/images/${item.image}`}
                 alt={item.name}
                 className="w-32"
               />

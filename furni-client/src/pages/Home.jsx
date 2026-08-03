@@ -3,7 +3,7 @@ import ProductSection from "../components/ProductSection";
 import WhyChooseUs from "../components/WhyChooseUs";
 import HelpSection from "../components/HelpSection";
 import PopularProducts from "../components/PopularProducts";
-import Testinomials from "../components/TestimonialSection";
+import Testimonials from "../components/TestimonialSection";
 import BlogSection from "../components/BlogSection";
 
 function Home() {
@@ -14,7 +14,7 @@ function Home() {
       <WhyChooseUs />
       <HelpSection />
       <PopularProducts />
-      <Testinomials />
+      <Testimonials />
       <BlogSection />
     </>
   );

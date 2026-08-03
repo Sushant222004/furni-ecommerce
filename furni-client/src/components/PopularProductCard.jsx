@@ -3,7 +3,7 @@ function PopularProductCard({ head, para, image }) {
     <div className="flex gap-4 items-center">
       <div className="">
         <img
-          src={`http://localhost:5000/images/${image}`}
+          src={`https://furni-ecommerce-3.onrender.com/images/${image}`}
           alt={head}
           className="w-50 h-50 object-contain"
         />

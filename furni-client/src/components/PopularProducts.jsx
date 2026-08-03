@@ -9,7 +9,8 @@ function PopularProducts() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get("http://localhost:5000/api/products");
+      const response = await axios.get(  "https://furni-ecommerce-3.onrender.com/api/products"
+);
       setProducts(response.data.data);
     };
     fetchProducts();

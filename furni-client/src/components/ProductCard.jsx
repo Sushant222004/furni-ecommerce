@@ -8,7 +8,7 @@ function ProductCard({ id, image, name, price }) {
     >
       <img
         className="w-full max-w-87.5 transition duration-300 group-hover:-translate-y-3"
-        src={`http://localhost:5000/images/${image}`}
+        src={`http://furni-ecommerce-3.onrender.comimages/${image}`}
         alt={name}
       />
 

@@ -48,7 +48,7 @@ function Checkout() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/orders", {
+      const response = await axios.post("http://furni-ecommerce-3.onrender.com/api/orders", {
         ...formData,
         items: cartItems,
         total,

@@ -18,7 +18,7 @@ dotenv.config();
     cors({
       origin: [
         "http://localhost:5173",
-        "https://furni-ecommerce-iota.vercel.app",
+        "https://furni-ecommerce-tsn4.vercel.app",
       ],
       credentials: true,
     }),

@@ -14,7 +14,15 @@ dotenv.config();
 
   const app = express();
 
-  app.use(cors());
+  app.use(
+    cors({
+      origin: [
+        "http://localhost:5173",
+        "https://furni-ecommerce-iota.vercel.app/",
+      ],
+      credentials: true,
+    }),
+  );
   app.use(express.json());
   app.use("/images", express.static(path.join(__dirname, "images")));
 
